@@ -1,1 +1,3 @@
-abstract class Constants {}
+abstract class Constants {
+  static String fontFamilyCoh = 'CoHeadline';
+}
