@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadhil/core/utils/app_word.dart';
 import 'package:tadhil/core/utils/colors.dart';
@@ -31,8 +32,8 @@ class OnBoardingItem extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage(
-                onboardingModel.backgroundImg,
+              image: NetworkImage(
+                onboardingModel.image,
               ),
             ),
           ),
@@ -42,22 +43,28 @@ class OnBoardingItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset(
-                onboardingModel.logo,
-                width: 120,
-                height: 53,
+              Text(
+                onboardingModel.title,
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                // width: 120,
+                // height: 53,
               ),
               const SizedBox(
                 height: 20,
               ),
-              Text(
-                onboardingModel.description,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  onboardingModel.description,
+                  style: const TextStyle(
+                    fontFamily: 'CoHeadline',
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.start,
                 ),
-                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 16,
@@ -65,7 +72,7 @@ class OnBoardingItem extends StatelessWidget {
               SmoothPageIndicator(
                 controller: cubit.pageController,
                 count: cubit.onboardingList.length,
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 effect: const ExpandingDotsEffect(
                   dotColor: AppColor.unSelectedDots,
                   activeDotColor: Colors.white,
@@ -82,60 +89,63 @@ class OnBoardingItem extends StatelessWidget {
                     width: 163,
                     height: 50,
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
                         ),
-                        onPressed: () {
-                          if (cubit.isLast.value) {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => const Scaffold(
-                                  body: Center(
-                                    child: Text('Login'),
-                                  ),
+                      ),
+                      onPressed: () {
+                        if (cubit.isLast.value) {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const Scaffold(
+                                body: Center(
+                                  child: Text('Login'),
                                 ),
                               ),
-                            );
-                          } else {
-                            cubit.pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeInOut,
-                            );
-                          }
-                        },
-                        child: ValueListenableBuilder<bool>(
-                          valueListenable: cubit.isLast,
-                          builder: (context, isLast, child) => Text(
-                            !isLast ? AppWords.continueBtn : AppWords.login,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
                             ),
+                          );
+                        } else {
+                          cubit.pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                      child: ValueListenableBuilder<bool>(
+                        valueListenable: cubit.isLast,
+                        builder: (context, isLast, child) => Text(
+                          !isLast ? AppWords.continueBtn : AppWords.login,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
                   const Spacer(),
                   TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Scaffold(
-                                    body: Center(
-                                      child: Text('Login'),
-                                    ),
-                                  )),
-                        );
-                      },
-                      child: Text(
-                        AppWords.skip,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Scaffold(
+                            body: Center(
+                              child: Text('Login'),
+                            ),
+                          ),
                         ),
-                      )),
+                      );
+                    },
+                    child: Text(
+                      AppWords.skip,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],

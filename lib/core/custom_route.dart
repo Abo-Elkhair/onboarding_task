@@ -7,7 +7,7 @@ Route createRoute(Widget child) {
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
-      const curve = Curves.ease;
+      const curve = Curves.easeInQuart;
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
       return SlideTransition(

@@ -30,11 +30,12 @@ environment:
 dependencies:
   bloc: ^8.1.4
   cupertino_icons: ^1.0.6
+  dio: ^5.5.0+1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  shared_preferences: ^2.2.3
   smooth_page_indicator: ^1.1.0
-  
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -54,6 +55,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/fonts/
 
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -70,7 +72,6 @@ flutter:
       fonts:
         - asset: assets/fonts/Co_Headline_Bold.otf
         - weight: 700
-
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
