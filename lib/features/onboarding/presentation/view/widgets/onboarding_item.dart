@@ -14,12 +14,12 @@ class OnBoardingItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(
-            onboardingModel.title,
-            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            // width: 120,
-            // height: 53,
-          ),
+          // Text(
+          //   onboardingModel.title,
+          //   style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          //   // width: 120,
+          //   // height: 53,
+          // ),
           const SizedBox(
             height: 20,
           ),
@@ -33,7 +33,7 @@ class OnBoardingItem extends StatelessWidget {
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.end,
             ),
           ),
         ],

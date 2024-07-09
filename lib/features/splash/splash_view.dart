@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tadhil/core/custom_route.dart';
 import 'package:tadhil/core/utils/app_images.dart';
+import 'package:tadhil/core/utils/colors.dart';
 import 'package:tadhil/features/onboarding/presentation/view/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -27,6 +28,14 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              AppColor.shamwa,
+              AppColor.shamwa.withOpacity(0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
           image: DecorationImage(
               alignment: Alignment.center,
               image: AssetImage(AppImages.splash),

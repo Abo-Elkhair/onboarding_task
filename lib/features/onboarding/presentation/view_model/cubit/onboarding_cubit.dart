@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadhil/core/network/dio_helper.dart';
 
 import 'package:tadhil/features/onboarding/data/onboarding_model.dart';
-import 'package:tadhil/features/onboarding/presentation/view_model/cubit/states.dart';
+import 'package:tadhil/features/onboarding/presentation/view_model/cubit/onboarding_states.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit() : super(OnBoardingIntialState());
@@ -12,7 +12,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   List<OnboardingModel> onboardingList = [];
   PageController pageController = PageController();
   ValueNotifier<bool> isLast = ValueNotifier<bool>(false);
-  ValueNotifier<int> currentIndex = ValueNotifier<int>(0); // Add this line
+  ValueNotifier<int> currentIndex = ValueNotifier<int>(0);
 
   Future<void> getOnBoardingData() async {
     emit(OnBoardingLoadingState());
