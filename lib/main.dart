@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tadhil/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:tadhil/features/splash/splash_view.dart';
 
 void main() {
-  runApp(const Tadhil());
+  runApp(const Tafsil());
 }
 
-class Tadhil extends StatelessWidget {
-  const Tadhil({super.key});
+class Tafsil extends StatelessWidget {
+  const Tafsil({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingView(),
+      home: SplashView(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tadhil/core/utils/app_word.dart';
 import 'package:tadhil/core/utils/colors.dart';
 import 'package:tadhil/features/onboarding/data/onboarding_model.dart';
 
@@ -64,8 +65,6 @@ class OnBoardingItem extends StatelessWidget {
               SmoothPageIndicator(
                 controller: cubit.pageController,
                 count: cubit.onboardingList.length,
-
-                ///lang ar or en
                 textDirection: TextDirection.rtl,
                 effect: const ExpandingDotsEffect(
                   dotColor: AppColor.unSelectedDots,
@@ -90,13 +89,15 @@ class OnBoardingItem extends StatelessWidget {
                         ),
                         onPressed: () {
                           if (cubit.isLast.value) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Scaffold(
-                                body: Center(
-                                  child: Text('Login'),
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const Scaffold(
+                                  body: Center(
+                                    child: Text('Login'),
+                                  ),
                                 ),
                               ),
-                            ));
+                            );
                           } else {
                             cubit.pageController.nextPage(
                               duration: const Duration(milliseconds: 500),
@@ -107,7 +108,7 @@ class OnBoardingItem extends StatelessWidget {
                         child: ValueListenableBuilder<bool>(
                           valueListenable: cubit.isLast,
                           builder: (context, isLast, child) => Text(
-                            !isLast ? "استمرار" : "تسجيل الدخول",
+                            !isLast ? AppWords.continueBtn : AppWords.login,
                             style: const TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -118,14 +119,19 @@ class OnBoardingItem extends StatelessWidget {
                   const Spacer(),
                   TextButton(
                       onPressed: () {
-                        cubit.pageController.nextPage(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut,
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Scaffold(
+                                    body: Center(
+                                      child: Text('Login'),
+                                    ),
+                                  )),
                         );
                       },
-                      child: const Text(
-                        'تخطي',
-                        style: TextStyle(
+                      child: Text(
+                        AppWords.skip,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                         ),

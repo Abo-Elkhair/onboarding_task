@@ -16,7 +16,7 @@ class OnboardingBody extends StatelessWidget {
         reverse: true,
         itemCount: cubit.onboardingList.length,
         itemBuilder: (context, index) {
-          log("islase ${cubit.isLast} index $index");
+          log("is last  ${cubit.isLast} index $index");
           return OnBoardingItem(onboardingModel: cubit.onboardingList[index]);
         });
   }

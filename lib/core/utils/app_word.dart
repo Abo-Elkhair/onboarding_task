@@ -4,4 +4,5 @@ class AppWords {
   static String onBoardThirdDesc = 'امان تام ، ثقة وتعامل مضمون';
   static String continueBtn = 'استمرار';
   static String skip = 'تخطى';
+  static String login = 'تسجيل الدخول';
 }
