@@ -16,4 +16,27 @@ class OnboardingModel {
         image: json["image"],
         description: json["description"]);
   }
+  static List<OnboardingModel> get onBoardingList => [
+        OnboardingModel(
+          id: 1,
+          title: 'title',
+          description: 'description 1',
+          image:
+              'https://img.freepik.com/free-photo/creative-light-bulb-abstract-glowing-blue-background-generative-ai_188544-8090.jpg',
+        ),
+        OnboardingModel(
+          id: 2,
+          title: 'title',
+          description: 'description 2',
+          image:
+              'https://img.freepik.com/free-photo/creative-light-bulb-abstract-glowing-blue-background-generative-ai_188544-8090.jpg',
+        ),
+        OnboardingModel(
+          id: 3,
+          title: 'title',
+          description: 'description 3',
+          image:
+              'https://img.freepik.com/free-photo/creative-light-bulb-abstract-glowing-blue-background-generative-ai_188544-8090.jpg',
+        ),
+      ];
 }
